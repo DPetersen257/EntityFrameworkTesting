@@ -6,6 +6,8 @@ namespace ClassLibrary1.Data_Access;
 
 public class MyAppContext : DbContext
 {
+    public MyAppContext() { }
+
     public MyAppContext(DbContextOptions<MyAppContext> options)
             : base(options)
     {
@@ -13,6 +15,14 @@ public class MyAppContext : DbContext
 
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<Product> Products => Set<Product>();
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseInMemoryDatabase("DataSource");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
