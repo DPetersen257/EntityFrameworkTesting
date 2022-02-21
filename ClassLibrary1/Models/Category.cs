@@ -10,5 +10,5 @@ public class Category : ICategory
 {
     public int CategoryID { get; set; }
     public string Name { get; set; } = "";
-    public virtual ICollection<IProduct> Products { get; set; } = new List<IProduct>();
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

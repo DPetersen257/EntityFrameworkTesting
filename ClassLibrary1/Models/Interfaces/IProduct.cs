@@ -4,5 +4,5 @@ public interface IProduct
 {
     int ProductID { get; set; }
     string Name { get; set; }
-    ICategory Category { get; set; }
+    Category Category { get; set; }
 }

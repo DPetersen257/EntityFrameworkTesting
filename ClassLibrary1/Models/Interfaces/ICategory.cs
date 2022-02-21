@@ -4,5 +4,5 @@ public interface ICategory
 {
     int CategoryID { get; set; }
     string Name { get; set; }
-    ICollection<IProduct> Products { get; set; }
+    ICollection<Product> Products { get; set; }
 }

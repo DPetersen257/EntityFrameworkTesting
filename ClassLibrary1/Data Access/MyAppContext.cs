@@ -1,5 +1,5 @@
 ﻿using ClassLibrary1.Data_Access.EntityConfigurations;
-using ClassLibrary1.Models.Interfaces;
+using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary1.Data_Access;
@@ -11,8 +11,8 @@ public class MyAppContext : DbContext
     {
     }
 
-    public DbSet<ICategory> Categories => Set<ICategory>();
-    public DbSet<IProduct> Products => Set<IProduct>();
+    public DbSet<Category> Categories => Set<Category>();
+    public DbSet<Product> Products => Set<Product>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
