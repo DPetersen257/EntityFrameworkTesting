@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Destructurama;
+using ClassLibrary1;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace WinFormsApp1;
 
@@ -30,6 +32,7 @@ internal static class Program
 
         var services = new ServiceCollection();
         ConfigureServices(services);
+
         using ServiceProvider serviceProvider = services.BuildServiceProvider();
         try
         {
@@ -45,6 +48,7 @@ internal static class Program
     {
         services.AddLogging(x => x.AddSerilog(Log.Logger, true));
         services.AddDbContext<MyAppContext>(opt => { opt.UseInMemoryDatabase("DBMemory"); opt.EnableSensitiveDataLogging(); }) ;
+        services.AddScoped<DoSomethingClass>();
         services.AddScoped<Form1>();
     }
 
