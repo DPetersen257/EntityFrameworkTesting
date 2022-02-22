@@ -20,7 +20,7 @@ public class MyAppContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseInMemoryDatabase("DataSource");
+            optionsBuilder.UseInMemoryDatabase("DBMemory");
         }
     }
 

@@ -1,5 +1,4 @@
 ﻿using ClassLibrary1.Models;
-using ClassLibrary1.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

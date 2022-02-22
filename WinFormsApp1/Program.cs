@@ -47,7 +47,7 @@ internal static class Program
     private static void ConfigureServices(ServiceCollection services)
     {
         services.AddLogging(x => x.AddSerilog(Log.Logger, true));
-        services.AddDbContext<MyAppContext>(opt => { opt.UseInMemoryDatabase("DBMemory"); opt.EnableSensitiveDataLogging(); }) ;
+        services.AddDbContext<MyAppContext>();
         services.AddScoped<DoSomethingClass>();
         services.AddScoped<Form1>();
     }
