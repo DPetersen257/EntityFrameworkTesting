@@ -17,10 +17,11 @@ internal static class Program
     {
         ApplicationConfiguration.Initialize();
 
-        var builder = new ConfigurationBuilder();
-        BuildConfig(builder);
+        var builder = BuildConfig();
+
         Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(builder.Build())
+            .ReadFrom.Configuration(builder)
+            .Enrich.FromLogContext()
             .Destructure.UsingAttributes()
             .CreateLogger();
 
@@ -47,11 +48,15 @@ internal static class Program
         services.AddScoped<Form1>();
     }
 
-    private static void BuildConfig(IConfigurationBuilder builder)
+    private static IConfiguration BuildConfig()
     {
+        var builder = new ConfigurationBuilder();
+
         builder.SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
             .AddEnvironmentVariables();
+
+        return builder.Build();
     }
 }
