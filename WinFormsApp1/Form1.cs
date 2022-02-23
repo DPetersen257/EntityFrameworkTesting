@@ -41,8 +41,7 @@ public partial class Form1 : Form
 
     private void Button1_Click(object sender, EventArgs e)
     {
-        var something = _serviceProvider.GetService<DoSomethingClass>();
+        var something = _serviceProvider.GetRequiredService<IDoSomethingClass>();
         string test = something.DoSomething();
-        test = test;
     }
 }

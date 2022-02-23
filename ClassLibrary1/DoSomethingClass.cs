@@ -2,7 +2,7 @@
 
 namespace ClassLibrary1;
 
-public class DoSomethingClass
+public class DoSomethingClass : IDoSomethingClass
 {
     private readonly ILogger _logger;
 
