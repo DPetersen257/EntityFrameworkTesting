@@ -11,12 +11,10 @@ public partial class Form1 : Form
 {
     private readonly ILogger _logger;
     private readonly MyAppContext _context;
-    private readonly IServiceProvider _serviceProvider;
-    public Form1(IServiceProvider services, ILogger<Form1> logger, MyAppContext context)
+    public Form1(ILogger<Form1> logger, MyAppContext context)
     {
         _logger = logger;
         _context = context;
-        _serviceProvider = services;
 
         Category c = new Category
         {
@@ -41,7 +39,7 @@ public partial class Form1 : Form
 
     private void Button1_Click(object sender, EventArgs e)
     {
-        var something = _serviceProvider.GetRequiredService<IDoSomethingClass>();
+        var something = Program.ServiceProvider.GetRequiredService<IDoSomethingClass>();
         string test = something.DoSomething();
     }
 }
